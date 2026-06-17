@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>She.CodeAI — Tecnologia que Transforma</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #7B5EA7;
+    --purple-light: #EDE7F6;
+    --purple-mid: #B39DDB;
+    --pink: #C2185B;
+    --pink-light: #FCE4EC;
+    --pink-mid: #F48FB1;
+    --dark: #1C1B2E;
+    --text: #2D2B3A;
+    --text-muted: #6B6880;
+    --bg: #FAFAFA;
+    --white: #FFFFFF;
+    --border: #E8E4F0;
+    --grad: linear-gradient(135deg, #7B5EA7 0%, #C2185B 100%);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px; height: 36px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .logo-ring {
+    position: absolute;
+    border-radius: 50%;
+  }
+  .ring-1 { width: 36px; height: 36px; border: 2px solid var(--purple); opacity: 0.25; }
+  .ring-2 { width: 26px; height: 26px; border: 2px solid var(--purple); opacity: 0.5; }
+  .ring-3 { width: 16px; height: 16px; background: var(--grad); border-radius: 50%; }
+
+  .logo-text {
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .logo-text span { color: var(--purple); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--purple); }
+
+  .btn-nav {
+    background: var(--grad);
+    color: #fff !important;
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: opacity 0.2s !important;
+  }
+  .btn-nav:hover { opacity: 0.88; color: #fff !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .blob-1 { width: 500px; height: 500px; background: var(--purple); top: -100px; right: -100px; }
+  .blob-2 { width: 400px; height: 400px; background: var(--pink); bottom: -50px; left: -80px; }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--purple-light);
+    color: var(--purple);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--purple);
+  }
+
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .highlight {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    line-height: 1.8;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--grad);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--purple);
+    border: 1.5px solid var(--purple-mid);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: var(--purple-light); transform: translateY(-1px); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.25rem;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 340px; height: 380px;
+  }
+
+  .hero-stats-strip {
+    display: flex; gap: 1rem; width: 340px;
+  }
+  .hss-item {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 0.875rem 1rem;
+    text-align: center;
+  }
+  .hss-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hss-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .hero-pills {
+    display: flex; gap: 8px; flex-wrap: wrap; width: 340px; justify-content: center;
+  }
+  .hero-pill {
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--purple-mid);
+  }
+  .hero-pill.pink {
+    background: var(--pink-light);
+    color: var(--pink);
+    border-color: var(--pink-mid);
+  }
+
+  .visual-card {
+    position: absolute;
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(123,94,167,0.08);
+  }
+
+  .vc-main {
+    width: 280px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .vc-top {
+    width: 200px;
+    top: 0; right: 0;
+    transform: rotate(4deg);
+  }
+
+  .vc-bottom {
+    width: 210px;
+    bottom: 0; left: 0;
+    transform: rotate(-3deg);
+  }
+
+  .vc-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .vc-value {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .vc-value.grad {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .vc-bar {
+    margin-top: 10px;
+    display: flex; gap: 4px; align-items: flex-end; height: 36px;
+  }
+  .vc-bar-item {
+    flex: 1; border-radius: 4px 4px 0 0;
+    background: var(--purple-light);
+  }
+  .vc-bar-item.active { background: var(--purple); }
+
+  .vc-tag {
+    display: inline-block;
+    background: var(--pink-light);
+    color: var(--pink);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* QUEM SOMOS */
+  .about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+
+  .stat-card.accent {
+    background: var(--purple-light);
+    border-color: var(--purple-mid);
+  }
+
+  .stat-card.accent2 {
+    background: var(--pink-light);
+    border-color: var(--pink-mid);
+    grid-column: span 2;
+  }
+
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .about-tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--purple-mid);
+  }
+
+  /* SERVIÇOS */
+  .services { background: var(--bg); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grad);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(123,94,167,0.10); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 22px;
+  }
+
+  .si-purple { background: var(--purple-light); }
+  .si-pink { background: var(--pink-light); }
+  .si-mix { background: linear-gradient(135deg, var(--purple-light), var(--pink-light)); }
+
+  .service-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-badge {
+    display: inline-block;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  .service-badge.pink {
+    background: var(--pink-light);
+    color: var(--pink);
+  }
+
+  /* MVV */
+  .mvv { background: var(--dark); padding: 5rem 2rem; }
+  .mvv .section-label { color: var(--pink-mid); }
+  .mvv .section-title { color: #fff; margin-bottom: 2.5rem; }
+
+  .mvv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .mvv-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .mvv-card:hover { background: rgba(255,255,255,0.07); }
+
+  .mvv-visual {
+    margin-bottom: 1.25rem;
+  }
+
+  .mvv-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+
+  .mvv-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple-mid);
+    margin-bottom: 0.75rem;
+  }
+
+  .mvv-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .mvv-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  .valores-pills {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;
+  }
+
+  .vpill {
+    background: rgba(123,94,167,0.18);
+    color: var(--purple-mid);
+    border: 1px solid rgba(123,94,167,0.3);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  /* CONTATO */
+  .contact { background: var(--bg); }
+
+  .contact-inner {
+    max-width: 640px; margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-inner .section-title { margin-bottom: 0.5rem; }
+  .contact-inner .section-sub { margin: 0 auto 2.5rem; }
+
+  .contact-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    text-align: left;
+  }
+
+  .form-row { margin-bottom: 1.25rem; }
+
+  .form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus { border-color: var(--purple); }
+
+  .form-row textarea { resize: vertical; min-height: 110px; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--grad);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .or-divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    position: relative;
+  }
+  .or-divider::before, .or-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%; width: 42%;
+    height: 1px; background: var(--border);
+  }
+  .or-divider::before { left: 0; }
+  .or-divider::after { right: 0; }
+
+  .btn-whatsapp {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 100px;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-whatsapp:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .wa-icon {
+    width: 20px; height: 20px;
+    fill: #fff;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex; justify-content: center; gap: 2rem;
+    list-style: none; margin-bottom: 2rem;
+  }
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--purple-mid); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    z-index: 200;
+    transition: transform 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .mvv-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">
+      <div class="logo-ring ring-1"></div>
+      <div class="logo-ring ring-2"></div>
+      <div class="logo-ring ring-3"></div>
+    </div>
+    <span class="logo-text">She.<span>Code</span>AI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Quem Somos</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#proposito">Propósito</a></li>
+    <li><a href="#contato" class="btn-nav">Fale Conosco</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-blob blob-1"></div>
+  <div class="hero-bg-blob blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1>
+        Tecnologia que<br/>
+        <span class="highlight">Gera Resultados</span><br/>
+        Reais
+      </h1>
+      <p>
+        Software sob medida, IA aplicada e vendas online que funcionam de verdade. Somos especialistas em transformar operações digitais em resultados — com quase 20 anos de mercado e parceria oficial Amazon.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5511974988612?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Shecode.AI" target="_blank" class="btn-primary">
+          Fale Conosco
+        </a>
+        <a href="#servicos" class="btn-secondary">
+          Conheça nossos serviços
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="visual-card vc-top">
+          <div class="vc-label">Parceria Amazon</div>
+          <div class="vc-value grad">Amazon</div>
+          <div class="vc-tag">Integradora Oficial</div>
+        </div>
+        <div class="visual-card vc-main">
+          <div class="vc-label">Performance de Vendas</div>
+          <div class="vc-value">+147%</div>
+          <div class="vc-bar">
+            <div class="vc-bar-item" style="height:40%"></div>
+            <div class="vc-bar-item" style="height:60%"></div>
+            <div class="vc-bar-item" style="height:50%"></div>
+            <div class="vc-bar-item active" style="height:80%"></div>
+            <div class="vc-bar-item active" style="height:100%"></div>
+          </div>
+        </div>
+        <div class="visual-card vc-bottom">
+          <div class="vc-label">Experiência</div>
+          <div class="vc-value grad">20 anos</div>
+          <div class="vc-tag">Mercado de Tech</div>
+        </div>
+      </div>
+      <div class="hero-stats-strip">
+        <div class="hss-item">
+          <div class="hss-num">3</div>
+          <div class="hss-label">frentes integradas</div>
+        </div>
+        <div class="hss-item">
+          <div class="hss-num">20+</div>
+          <div class="hss-label">anos de experiência</div>
+        </div>
+        <div class="hss-item">
+          <div class="hss-num">IA</div>
+          <div class="hss-label">aplicada a vendas</div>
+        </div>
+      </div>
+      <div class="hero-pills">
+        <span class="hero-pill">Integradora Amazon</span>
+        <span class="hero-pill pink">IA aplicada a negócios</span>
+        <span class="hero-pill">Software sob medida</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section class="about" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Quem Somos</div>
+        <h2 class="section-title">A Shecode.AI constrói<br/>tecnologia com propósito</h2>
+        <p>
+          Nascemos de quase duas décadas no mercado de tecnologia. Somos uma empresa que une desenvolvimento de software, IA e vendas online para gerar resultados reais e sustentáveis.
+        </p>
+        <p>
+          Nosso propósito: <strong>transformar negócios através da tecnologia</strong>, com estratégia, execução e honestidade — sem fórmulas mágicas.
+        </p>
+        <div class="about-tags">
+          <span class="tag">IA Aplicada</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Desenvolvimento</span>
+          <span class="tag">Consultoria</span>
+          <span class="tag">Automação Inteligente</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="stat-card accent">
+          <div class="stat-num">20+</div>
+          <div class="stat-desc">Anos de experiência em tecnologia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-desc">Frentes de atuação integradas</div>
+        </div>
+        <div class="stat-card accent2">
+          <div class="stat-num">Amazon</div>
+          <div class="stat-desc">Parceira de integração oficial Amazon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="section-inner">
+    <div class="section-label">O Que Fazemos</div>
+    <h2 class="section-title">Três frentes,<br/>um propósito</h2>
+    <p class="section-sub">Atuamos de forma integrada para entregar tecnologia, conhecimento e produtos que geram resultados reais e sustentáveis.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon si-purple">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Desenvolvimento de Software e Integrações</h3>
+        <p>Criamos soluções sob medida para sua empresa, desenvolvemos plataformas, lojas virtuais e otimizamos operações digitais. A Shecode.AI atua como parceira de integração da Amazon.</p>
+        <span class="service-badge">Parceira Amazon</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon si-pink">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2185B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Consultoria e Mentoria para Vendas Online</h3>
+        <p>Ajudamos empresas e empreendedoras a estruturarem e escalarem suas operações em marketplaces e lojas virtuais. Consultoria baseada em experiência prática real de mercado.</p>
+        <span class="service-badge pink">Mentoria</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon si-mix">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Plataforma de Performance para Vendas</h3>
+        <p>Desenvolvemos plataforma de performance de vendas para marketplaces e lojas virtuais, resolvendo a dificuldade de centralizar dados e entender claramente a performance do seu negócio.</p>
+        <span class="service-badge">Plataforma Própria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITO -->
+<section class="mvv" id="proposito">
+  <div class="section-inner">
+    <div class="section-label">O DNA da Shecode.AI</div>
+    <h2 class="section-title" style="color:#fff; margin-bottom:0.5rem;">O que nos move todo dia</h2>
+    <p style="color:rgba(255,255,255,0.5); font-size:15px; margin-bottom:3rem; max-width:500px;">Mais do que uma empresa de tech — somos uma empresa com intenção clara sobre o que construímos e por quê.</p>
+
+    <div class="mvv-grid">
+
+      <!-- MISSÃO -->
+      <div class="mvv-card">
+        <div class="mvv-visual">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" stroke="url(#g1)" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="32" cy="32" r="20" stroke="url(#g1)" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="32" cy="32" r="10" stroke="url(#g1)" stroke-width="1.5" opacity="0.8"/>
+            <circle cx="32" cy="32" r="4" fill="url(#g1)"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B39DDB"/>
+                <stop offset="1" stop-color="#F48FB1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="mvv-tag">Missão</div>
+        <h3>Transformar negócios através da tecnologia</h3>
+        <p>A Shecode.AI entrega excelência em software, IA e e-commerce — com estratégia real, execução consistente e resultados mensuráveis.</p>
+      </div>
+
+      <!-- VISÃO -->
+      <div class="mvv-card">
+        <div class="mvv-visual">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 32 C8 32, 20 12, 32 12 C44 12, 56 32, 56 32 C56 32, 44 52, 32 52 C20 52, 8 32, 8 32Z" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="32" cy="32" r="10" stroke="url(#g2)" stroke-width="1.5" opacity="0.8"/>
+            <circle cx="32" cy="32" r="4" fill="url(#g2)"/>
+            <line x1="32" y1="6" x2="32" y2="14" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="32" y1="50" x2="32" y2="58" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/>
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B39DDB"/>
+                <stop offset="1" stop-color="#F48FB1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="mvv-tag">Visão</div>
+        <h3>Referência em tech e e-commerce</h3>
+        <p>Ser reconhecida pela excelência das entregas, pela força dos produtos de performance em vendas e pelo impacto positivo no ecossistema digital.</p>
+      </div>
+
+      <!-- VALORES -->
+      <div class="mvv-card mvv-valores-card">
+        <div class="mvv-visual">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="32,6 38,24 58,24 42,36 48,54 32,42 16,54 22,36 6,24 26,24" stroke="url(#g3)" stroke-width="1.5" stroke-linejoin="round" opacity="0.7" fill="none"/>
+            <polygon points="32,18 35,27 44,27 37,33 40,42 32,36 24,42 27,33 20,27 29,27" fill="url(#g3)" opacity="0.25"/>
+            <defs>
+              <linearGradient id="g3" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B39DDB"/>
+                <stop offset="1" stop-color="#F48FB1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="mvv-tag">Valores</div>
+        <div class="valores-pills">
+          <span class="vpill">Humanidade antes da tecnologia</span>
+          <span class="vpill">Protagonismo feminino</span>
+          <span class="vpill">Mentalidade de crescimento</span>
+          <span class="vpill">Melhoria contínua</span>
+          <span class="vpill">Protagonismo profissional</span>
+          <span class="vpill">Respeito às diversidades</span>
+          <span class="vpill">Compromisso com resultados sustentáveis</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact" id="contato">
+  <div class="contact-inner">
+    <div class="section-label">Fale Conosco</div>
+    <h2 class="section-title">Vamos conversar?</h2>
+    <p class="section-sub">Conte sobre o seu negócio e descubra como podemos ajudar a crescer juntas.</p>
+
+    <div class="contact-form">
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome"/>
+        </div>
+        <div class="form-row">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" placeholder="Nome da empresa"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com"/>
+      </div>
+      <div class="form-row">
+        <label for="assunto">Como podemos ajudar?</label>
+        <select id="assunto">
+          <option value="">Selecione um tema</option>
+          <option>Desenvolvimento de Software</option>
+          <option>Loja virtual / E-commerce</option>
+          <option>Venda em marketplace</option>
+          <option>Consultoria para Marketplace</option>
+          <option>Plataforma de Performance de Vendas</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" placeholder="Conte um pouco sobre o seu projeto ou desafio..."></textarea>
+      </div>
+      <button type="button" class="btn-submit">
+        Enviar mensagem
+      </button>
+      <div class="or-divider">ou fale direto pelo WhatsApp</div>
+      <a href="https://wa.me/5511974988612?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Shecode.AI" target="_blank" class="btn-whatsapp">
+        <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Falar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <div class="logo-icon">
+      <div class="logo-ring ring-1" style="border-color:#B39DDB"></div>
+      <div class="logo-ring ring-2" style="border-color:#B39DDB"></div>
+      <div class="logo-ring ring-3"></div>
+    </div>
+    <span class="logo-text" style="color:#fff">She.<span>Code</span>AI</span>
+  </a>
+  <p class="footer-tagline">Tecnologia que transforma. Liderança que inspira.</p>
+  <ul class="footer-links">
+    <li><a href="#sobre">Quem Somos</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#proposito">Propósito</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Shecode.AI. Todos os direitos reservados.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511974988612?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Shecode.AI" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
