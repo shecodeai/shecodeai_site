@@ -115,3 +115,29 @@ O site está publicado via **GitHub Pages** em `shecodeai.com.br`.
 
 Para publicar mudanças: basta fazer `git push origin main` — o GitHub Pages atualiza automaticamente em 1-2 minutos.
 
+---
+
+## Comandos Git
+
+### Primeira vez (branch local é `master`, remoto espera `main`)
+
+```powershell
+git branch -m master main        # renomeia branch local
+git push origin main             # sobe para o GitHub
+```
+
+### Atualizações do dia a dia
+
+```powershell
+git add index.html               # ou os arquivos alterados
+git commit -m "descrição breve"
+git push origin main
+```
+
+### Verificar estado antes de commitar
+
+```powershell
+git status    # arquivos modificados
+git diff      # o que mudou linha a linha
+```
+
