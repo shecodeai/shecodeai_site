@@ -1,6 +1,8 @@
 # Shecode.AI — Landing Page
 
-Site institucional da Shecode.AI, empresa de tecnologia especializada em desenvolvimento de software, inteligência artificial e soluções para vendas online.
+Site institucional da Shecode.AI, empresa de tecnologia liderada por mulheres, especializada em desenvolvimento de software, inteligência artificial e soluções para vendas online.
+
+Publicado em: **shecodeai.com.br** (via GitHub Pages)
 
 ## Estrutura
 
@@ -17,6 +19,16 @@ Abra o arquivo `index.html` diretamente no navegador, ou suba para qualquer serv
 - **Netlify** — arraste a pasta para netlify.com/drop
 - **Vercel** — conecte o repositório no vercel.com
 
+## Deploy
+
+Para publicar mudanças:
+
+```bash
+git push origin main
+```
+
+O GitHub Pages atualiza automaticamente em 1–2 minutos.
+
 ## Tecnologias
 
 - HTML5 + CSS3 puro (sem frameworks)
@@ -29,7 +41,7 @@ Abra o arquivo `index.html` diretamente no navegador, ou suba para qualquer serv
 
 1. Hero — apresentação principal
 2. Quem Somos
-3. O Que Fazemos (3 serviços)
+3. O Que Fazemos (serviços)
 4. Propósito (Missão, Visão e Valores)
 5. Fale Conosco (formulário + WhatsApp)
 
@@ -42,3 +54,5 @@ Todas as cores estão definidas em variáveis CSS no topo do `<style>`:
 --pink: #C2185B;
 --dark: #1C1B2E;
 ```
+
+Consulte o `CLAUDE.md` para diretrizes completas de edição, paleta e tom de voz.
