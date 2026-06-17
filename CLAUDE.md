@@ -141,3 +141,30 @@ git status    # arquivos modificados
 git diff      # o que mudou linha a linha
 ```
 
+### Criar e trabalhar em uma nova branch
+
+```powershell
+git checkout -b nome-da-branch   # cria e já entra na branch
+git push origin nome-da-branch   # sobe a branch para o GitHub
+
+# quando terminar, voltar para main e fazer merge
+git checkout main
+git merge nome-da-branch
+git push origin main
+```
+
+---
+
+## Rodar o projeto localmente
+
+O site não tem build step — basta abrir o arquivo no navegador:
+
+```powershell
+# Windows — abre direto no navegador padrão
+start index.html
+
+# Ou arraste o arquivo index.html para qualquer aba do navegador
+```
+
+Para ver mudanças: salve o arquivo e recarregue a página (`F5` ou `Ctrl+R`).
+
