@@ -1,8 +1,8 @@
-# Shecode.AI — Landing Page
+# She.codeAI — Landing Page
 
 ## Visão Geral do Projeto
 
-Site institucional da **Shecode.AI**, empresa de tecnologia liderada por mulheres, especializada em desenvolvimento de software, inteligência artificial, plataforma de performance para vendas online e soluções para vendas online.
+Site institucional da **She.codeAI**, empresa de tecnologia liderada por mulheres, especializada em desenvolvimento de software, inteligência artificial, plataforma de performance para vendas online e soluções para vendas online.
 
 O site é uma **single-page landing page** em HTML/CSS puro, sem frameworks ou dependências externas além das Google Fonts.
 
@@ -13,6 +13,9 @@ O site é uma **single-page landing page** em HTML/CSS puro, sem frameworks ou d
 ```
 shecodeai-site/
 ├── index.html       ← toda a página (HTML + CSS inline)
+├── robots.txt       ← permissões para bots (Google, IA, etc.)
+├── sitemap.xml      ← mapa do site para indexação
+├── llms.txt         ← descrição estruturada para modelos de IA
 ├── CLAUDE.md        ← este arquivo
 ├── SKILL.md         ← skill de manutenção do site
 └── README.md        ← instruções de deploy
@@ -82,7 +85,7 @@ shecodeai-site/
 - **Feminino** — sempre usar "parceira", "integradora", quando se referir a empresa SheCodeAI(nunca o masculino genérico)
 - **Direto e confiante** — sem jargão excessivo, sem promessas milagrosas
 - **Humano + tech** — equilíbrio entre acolhimento e precisão técnica
-- **Nome da empresa**: sempre **Shecode.AI** (com ponto e maiúscula no AI)
+- **Nome da empresa**: sempre **She.codeAI** (S maiúsculo, ponto após "She", "code" minúsculo, AI maiúsculo)
 
 ---
 
@@ -91,7 +94,7 @@ shecodeai-site/
 ### Ao alterar textos
 - Manter sentence case nos títulos (não Title Case)
 - Não repetir "liderança feminina" em múltiplas seções — já aparece nos Valores
-- Sempre mencionar "Shecode.AI" pelo nome em pelo menos uma seção de serviços
+- Sempre mencionar "She.codeAI" pelo nome em pelo menos uma seção de serviços
 
 ### Ao alterar cores
 - Sempre usar as variáveis CSS definidas em `:root` — nunca hardcodar hex diretamente no HTML
@@ -106,6 +109,12 @@ shecodeai-site/
 - Usar SVG inline com `stroke` — não usar emojis
 - Tamanho padrão: `22x22px`, `stroke-width: 1.8`, `stroke-linecap: round`
 - Cores: `stroke="#7B5EA7"` (roxo) ou `stroke="#C2185B"` (pink)
+
+### Ao atualizar conteúdo do site
+
+Sempre que fizer alterações relevantes no conteúdo do `index.html` (novos textos, seções, serviços), atualizar também o campo `<lastmod>` no `sitemap.xml` com a data atual no formato `YYYY-MM-DD`.
+
+O `lastmod` é uma data **estática** — não se atualiza sozinha. O Google usa esse campo para saber quando o site foi modificado pela última vez.
 
 ---
 

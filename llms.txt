@@ -1,0 +1,9 @@
+# She.codeAI
+
+> Software sob medida, IA aplicada e vendas online que funcionam de verdade. Somos especialistas em transformar operações digitais em resultados, com quase 20 anos de mercado e parceria oficial Amazon.
+
+## Seções Principais (Âncoras na Landing Page)
+
+- [Serviços e Soluções](https://shecodeai.com.br/#servicos): Detalhes sobre automações, inteligência artificial e consultoria em e-commerce.
+- [Quem Somos](https://shecodeai.com.br/#sobre): Nossa trajetória de quase duas décadas em liderança tecnológica e engenharia de software.
+- [Contato](https://shecodeai.com.br/#contato): Canal direto para orçamentos e parcerias.
