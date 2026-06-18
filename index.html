@@ -4,7 +4,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shecode.AI — Tecnologia que Transforma</title>
+<meta name="description" content="Shecode.AI: software sob medida, IA aplicada e consultoria para vendas online. Parceira integradora oficial Amazon. Quase 20 anos de experiência em tecnologia."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://shecodeai.com.br/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://shecodeai.com.br/"/>
+<meta property="og:title" content="Shecode.AI — Tecnologia que Transforma"/>
+<meta property="og:description" content="Software sob medida, IA aplicada e vendas online que funcionam de verdade. Parceira integradora oficial Amazon. Quase 20 anos de mercado."/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Shecode.AI"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Shecode.AI — Tecnologia que Transforma"/>
+<meta name="twitter:description" content="Software sob medida, IA aplicada e vendas online. Parceira integradora oficial Amazon."/>
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,6 +40,22 @@
   }
 
   html { scroll-behavior: smooth; }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--purple);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 6px 6px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -826,6 +856,8 @@
 </head>
 <body>
 
+<a href="#inicio" class="skip-link">Ir para o conteúdo principal</a>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
@@ -842,7 +874,7 @@
     <li><a href="#proposito">Propósito</a></li>
     <li><a href="#contato" class="btn-nav">Fale Conosco</a></li>
   </ul>
-  <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+  <button class="nav-hamburger" id="nav-toggle" aria-label="Menu" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
@@ -851,8 +883,8 @@
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-bg-blob blob-1"></div>
-  <div class="hero-bg-blob blob-2"></div>
+  <div class="hero-bg-blob blob-1" aria-hidden="true"></div>
+  <div class="hero-bg-blob blob-2" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <h1>
@@ -876,7 +908,7 @@
       <div class="hero-card-stack">
         <div class="visual-card vc-top">
           <div class="vc-label">Parceria Amazon</div>
-          <img src="images/logooficialamazon.png" alt="Amazon" class="amazon-logo-card"/>
+          <img src="images/logooficialamazon.png" alt="Logo Amazon — Parceira Integradora Oficial" class="amazon-logo-card"/>
           <div class="vc-tag">Integradora Oficial</div>
         </div>
         <div class="visual-card vc-main">
@@ -950,7 +982,7 @@
           <div class="stat-desc">Frentes de atuação integradas</div>
         </div>
         <div class="stat-card accent2">
-          <img src="images/logooficialamazon.png" alt="Amazon" class="amazon-logo-stat"/>
+          <img src="images/logooficialamazon.png" alt="Logo Amazon — Parceira Integradora Oficial" class="amazon-logo-stat"/>
           <div class="stat-desc">Parceira de integração oficial Amazon</div>
         </div>
       </div>
@@ -1097,7 +1129,7 @@
       <div class="form-grid">
         <div class="form-row">
           <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome"/>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required/>
         </div>
         <div class="form-row">
           <label for="empresa">Empresa</label>
@@ -1106,7 +1138,7 @@
       </div>
       <div class="form-row">
         <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="seu@email.com"/>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required/>
       </div>
       <div class="form-row">
         <label for="assunto">Como podemos ajudar?</label>
@@ -1122,7 +1154,7 @@
       </div>
       <div class="form-row">
         <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu projeto ou desafio..."></textarea>
+        <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu projeto ou desafio..." required></textarea>
       </div>
       <button type="submit" class="btn-submit">
         Enviar mensagem
@@ -1160,9 +1192,29 @@
     </ul>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Shecode.AI. Todos os direitos reservados.</p>
+    <p class="footer-copy">© <span id="footer-year">2025</span> Shecode.AI. Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Shecode.AI",
+  "url": "https://shecodeai.com.br",
+  "logo": "https://shecodeai.com.br/images/favicon.svg",
+  "description": "Empresa de tecnologia especializada em desenvolvimento de software, IA aplicada e soluções para vendas online. Parceira integradora oficial Amazon.",
+  "foundingDate": "2005",
+  "email": "patriciadias@shecodeai.com.br",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+55-11-97498-8612",
+    "contactType": "customer service",
+    "availableLanguage": "Portuguese"
+  },
+  "sameAs": []
+}
+</script>
 
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/5511974988612?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Shecode.AI" target="_blank" class="wa-float" aria-label="WhatsApp">
@@ -1172,15 +1224,19 @@
 </a>
 
 <script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
   // Hamburger menu
   var toggle = document.getElementById('nav-toggle');
   var navLinks = document.getElementById('nav-links');
   toggle.addEventListener('click', function() {
-    navLinks.classList.toggle('open');
+    var isOpen = navLinks.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
   navLinks.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
       navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
 
