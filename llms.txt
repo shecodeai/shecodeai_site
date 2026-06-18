@@ -5,5 +5,5 @@
 ## Seções Principais (Âncoras na Landing Page)
 
 - [Serviços e Soluções](https://shecodeai.com.br/#servicos): Detalhes sobre automações, inteligência artificial e consultoria em e-commerce.
-- [Quem Somos](https://shecodeai.com.br/#sobre): Nossa trajetória de quase duas décadas em liderança tecnológica e engenharia de software.
+- [Quem Somos](https://shecodeai.com.br/#quem-somos): Nossa trajetória de quase duas décadas em liderança tecnológica e engenharia de software.
 - [Contato](https://shecodeai.com.br/#contato): Canal direto para orçamentos e parcerias.

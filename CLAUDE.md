@@ -66,7 +66,7 @@ shecodeai-site/
 | ID | Seção | Classe principal |
 |----|-------|-----------------|
 | `#inicio` | Hero | `.hero` |
-| `#sobre` | Quem Somos | `.about` |
+| `#quem-somos` | Quem Somos | `.about` |
 | `#servicos` | O Que Fazemos | `.services` |
 | `#proposito` | Propósito (MVV) | `.mvv` |
 | `#contato` | Fale Conosco | `.contact` |
